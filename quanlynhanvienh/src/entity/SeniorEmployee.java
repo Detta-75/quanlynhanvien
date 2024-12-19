@@ -31,7 +31,7 @@ public class SeniorEmployee extends Employee {
 
     @Override
     public String toString() {
-        return super.toString() + ", số năm công tác: " + yearsOfExperience + ", phụ cấp thâm niên: " + seniorityAllowance + ", tổng lương: " + calculateSalary();
+        return String.format("| %-20s | %-20s | %-20d | %-20.2f | %-11.2f |", getName(), getId(),yearsOfExperience,seniorityAllowance,calculateSalary());
     }
 
     @Override

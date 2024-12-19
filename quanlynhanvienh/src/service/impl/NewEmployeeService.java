@@ -12,12 +12,12 @@ public class NewEmployeeService implements INewEmployeeService {
     private static NewEmployeeRepository newEmployeeRepository = new NewEmployeeRepository();
     @Override
     public List<NewEmployee> getAll() {
-        return Collections.emptyList();
+        return newEmployeeRepository.findAll();
     }
 
     @Override
     public void save(NewEmployee newEmployee) {
-
+        newEmployeeRepository.save(newEmployee);
     }
 
     @Override

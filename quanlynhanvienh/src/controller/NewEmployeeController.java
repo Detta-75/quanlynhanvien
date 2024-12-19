@@ -12,4 +12,8 @@ public class NewEmployeeController {
     public List<NewEmployee> getAll() {
         return newEmployeeService.getAll();
     }
+
+    public void save(NewEmployee newEmployee) {
+        newEmployeeService.save(newEmployee);
+    }
 }

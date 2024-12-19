@@ -31,11 +31,12 @@ public class NewEmployee extends Employee{
 
     @Override
     public String toString() {
-        return super.toString() + ", số ngày thử việc: " + probationDays + ", thưởng thử việc: " + probationBonus + ", tổng lương: " + calculateSalary();
+        return String.format("| %-20s | %-20s | %-20d | %-20.2f | %-11.2f |", getName(), getId(),probationDays,probationBonus,calculateSalary());
     }
 
     @Override
     double calculateSalary() {
-        return LUONG_CO_BAN + (probationBonus + probationDays);
+        return LUONG_CO_BAN + (probationBonus * probationDays);
     }
+
 }

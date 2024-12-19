@@ -1,5 +1,7 @@
 package entity;
 
+import java.text.DecimalFormat;
+
 public abstract class Employee {
     private String name;
     private int id;
@@ -28,6 +30,11 @@ public abstract class Employee {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    static String formatConversion(double d) {
+        DecimalFormat df = new DecimalFormat("#,###.0");
+        return  df.format(d);
     }
 
     @Override
