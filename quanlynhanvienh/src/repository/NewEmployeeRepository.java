@@ -52,4 +52,48 @@ public class NewEmployeeRepository {
     private String newEmployeeToString(NewEmployee newEmployee){
         return newEmployee.getName() + "," + newEmployee.getId() + "," + newEmployee.getProbationDays() + "," + newEmployee.getProbationBonus();
     }
+
+    public void remove(int id) {
+        List<NewEmployee> newEmployees = findAll();
+        for (NewEmployee employee : newEmployees) {
+            if (employee.getId() == id) {
+                newEmployees.remove(employee);
+                break;
+            }
+        }
+        writeFile(newEmployees,false);
+    }
+
+    public NewEmployee findById(int id) {
+        List<NewEmployee> newEmployees = findAll();
+        for (NewEmployee employee : newEmployees) {
+            if (employee.getId() == id) {
+                return employee;
+            }
+        }
+        return null;
+    }
+
+    public void update(int id, NewEmployee newEmployee) {
+        List<NewEmployee> newEmployees = findAll();
+        for (NewEmployee employee : newEmployees){
+            if (employee.getId() == id) {
+                int index = newEmployees.indexOf(employee);
+                newEmployees.set(index,newEmployee);
+                break;
+            }
+        }
+        writeFile(newEmployees,false);
+    }
+
+    public List<NewEmployee> findAllByName(String name) {
+        List<NewEmployee> result = new ArrayList<>();
+        List<NewEmployee> newEmployees =findAll();
+        for (NewEmployee employee : newEmployees) {
+            if (employee.getName().contains(name)) {
+                result.add(employee);
+            }
+        }
+        return result;
+    }
 }

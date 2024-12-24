@@ -1,6 +1,5 @@
 package repository;
 
-import entity.NewEmployee;
 import entity.SeniorEmployee;
 
 import java.io.*;
@@ -52,5 +51,49 @@ public class SeniorEmployeeRepository {
 
     private String seniorEmployeeToString(SeniorEmployee seniorEmployee){
         return seniorEmployee.getName() + "," + seniorEmployee.getId() + "," + seniorEmployee.getYearsOfExperience() + "," + seniorEmployee.getSeniorityAllowance();
+    }
+
+    public void remove(int id) {
+        List<SeniorEmployee> seniorEmployees = findAll();
+        for (SeniorEmployee employee : seniorEmployees) {
+            if (employee.getId() == id) {
+                seniorEmployees.remove(employee);
+                break;
+            }
+        }
+        writeFile(seniorEmployees,false);
+    }
+
+    public SeniorEmployee findById(int id) {
+        List<SeniorEmployee> seniorEmployees = findAll();
+        for (SeniorEmployee employee : seniorEmployees) {
+            if (employee.getId() == id) {
+                return employee;
+            }
+        }
+        return null;
+    }
+
+    public void update(int id, SeniorEmployee seniorEmployee) {
+        List<SeniorEmployee> seniorEmployees = findAll();
+        for (SeniorEmployee employee : seniorEmployees) {
+            if (employee.getId() == id) {
+                int index = seniorEmployees.indexOf(employee);
+                seniorEmployees.set(index, seniorEmployee);
+                break;
+            }
+        }
+        writeFile(seniorEmployees,false);
+    }
+
+    public List<SeniorEmployee> findAllByName(String name) {
+        List<SeniorEmployee> result = new ArrayList<>();
+        List<SeniorEmployee> seniorEmployees = findAll();
+        for (SeniorEmployee employee : seniorEmployees) {
+            if(employee.getName().contains(name)) {
+                result.add(employee);
+            }
+        }
+        return result;
     }
 }

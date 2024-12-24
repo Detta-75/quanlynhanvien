@@ -14,4 +14,6 @@ public interface IService<T extends Employee> {
     void update(int id, T t);
 
     T findById(int id);
+
+    List<T> findAllByName(String name);
 }

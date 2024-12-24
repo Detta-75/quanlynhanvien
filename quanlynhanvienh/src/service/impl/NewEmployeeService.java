@@ -10,6 +10,7 @@ import java.util.List;
 
 public class NewEmployeeService implements INewEmployeeService {
     private static NewEmployeeRepository newEmployeeRepository = new NewEmployeeRepository();
+
     @Override
     public List<NewEmployee> getAll() {
         return newEmployeeRepository.findAll();
@@ -22,16 +23,21 @@ public class NewEmployeeService implements INewEmployeeService {
 
     @Override
     public void remove(int id) {
-
+        newEmployeeRepository.remove(id);
     }
 
     @Override
     public void update(int id, NewEmployee newEmployee) {
-
+        newEmployeeRepository.update(id, newEmployee);
     }
 
     @Override
     public NewEmployee findById(int id) {
-        return null;
+        return newEmployeeRepository.findById(id);
+    }
+
+    @Override
+    public List<NewEmployee> findAllByName(String name) {
+        return newEmployeeRepository.findAllByName(name);
     }
 }

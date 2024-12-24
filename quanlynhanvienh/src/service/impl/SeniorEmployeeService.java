@@ -22,16 +22,21 @@ public class SeniorEmployeeService implements ISeniorEmployeeService {
 
     @Override
     public void remove(int id) {
-
+        seniorEmployeeRepository.remove(id);
     }
 
     @Override
     public void update(int id, SeniorEmployee seniorEmployee) {
-
+        seniorEmployeeRepository.update(id, seniorEmployee);
     }
 
     @Override
     public SeniorEmployee findById(int id) {
-        return null;
+        return seniorEmployeeRepository.findById(id);
+    }
+
+    @Override
+    public List<SeniorEmployee> findAllByName(String name) {
+        return seniorEmployeeRepository.findAllByName(name);
     }
 }
